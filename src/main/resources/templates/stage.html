@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <meta charset="UTF-8">
+  <title>Détail d'une destination</title>
+</head>
+<body>
+<header th:replace="fragments/header.html :: top"></header>
+<div class="row">""</div>
+<div class="row">""</div>
+<div class="row">""</div>
+<div class="container">
+
+  <h1 th:text="|Destination - ${destination.country} |">Destination</h1>
+  <div class="row">
+    <h2 class="col-md-8" th:text="|Nombre d&apos;étapes : ${stageList.size()} |">Nombre d&apos;étapes</h2>
+  <br>
+  <br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table table-bordred table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Ville</th>
+              <th scope="col">Date de l'étape</th>
+              <th scope="col" class="text-center">Détail</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="stage : ${stageList}">
+              <td th:text="${stage.city}">name</td>
+              <td th:text="${stage.dateOfTravelStage}">date de l&apos;étape</td>
+              <td style="width: 10%;" class="text-center">
+                <a class="table-link" th:href="|@{/stage/}${stage.id}|">
+                            <span class="fa-stack">
+                                <i class="fa fa-square fa-stack-2x"></i>
+                                <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                            </span>
+                </a>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer th:replace="fragments/footer.html :: bottom"></footer>
+</body>
+</html>
